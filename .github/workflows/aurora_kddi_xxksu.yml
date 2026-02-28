@@ -37,6 +37,11 @@ jobs:
         git config --global user.name "Sorayukii"
         git config --global user.email "sorayukii69@gmail.com"
 
+    - name: Setup github account
+      run: |
+        git config --global user.name "Sorayukii"
+        git config --global user.name "sorayukii69@gmail.com"
+
     - name: Clone kernel source
       run: |
         git clone "$KERNEL_URL" -b "$KERNEL_BRANCH" kernel
