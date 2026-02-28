@@ -42,7 +42,7 @@ jobs:
 
     - name: Clone kernel source
       run: |
-        git clone --depth=1 "$KERNEL_URL" -b "$KERNEL_BRANCH" kernel
+        git clone "$KERNEL_URL" -b "$KERNEL_BRANCH" kernel
         cd kernel
         git reset --hard aa6cdd4604deb1f57221f2cdae39b1dc5f426594
         git cherry-pick cbecb5c913d27af503fa07cfcc178874d6f38a55..850214f22d5862ff3ffe31279712bd21c302d8b8
