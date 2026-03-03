@@ -11,9 +11,9 @@ jobs:
       CODENAME: aurora_kddi
       BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
       CHAT_ID: ${{ secrets.CHAT_ID }}
-      KERNEL_VER: Vermouth
+      KERNEL_VER: IvyOS
       KERNEL_URL: https://github.com/Sorayukii/stardust_kernel_sony_sdm845
-      KERNEL_BRANCH: master
+      KERNEL_BRANCH: uffd
       CLANG_URL: https://gitlab.com/kei-space/clang/r547379.git
       CLANG_BRANCH: master
       KSU_URL: https://raw.githubusercontent.com/Sorayukii/KernelSU-Next/stable/kernel/setup.sh
