@@ -24,7 +24,7 @@ jobs:
     env:
       BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
       CHAT_ID: ${{ secrets.CHAT_ID }}
-      KERNEL_VER: Stardust-v2.4.1
+      KERNEL_VER: Stardust-v2.5
       KERNEL_URL: https://github.com/Sorayukii/stardust_kernel_sony_sdm845
       KERNEL_BRANCH: master
       CLANG_URL: https://gitlab.com/Sorayukii/aosp-clang.git
@@ -70,7 +70,7 @@ jobs:
       run: |
         cd $KERNEL_DIR
         curl -LSs "$KSU_URL" | bash -s $KSU_BRANCH 
-        sed -i 's/-DKSU_VERSION=[0-9]\+/-DKSU_VERSION=32321/g' KernelSU/kernel/Makefile
+        sed -i 's/-DKSU_VERSION=[0-9]\+/-DKSU_VERSION=32323/g' KernelSU/kernel/Makefile
 
     - name: Generate defconfig
       run: |
