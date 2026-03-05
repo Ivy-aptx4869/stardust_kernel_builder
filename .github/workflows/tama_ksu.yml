@@ -96,24 +96,35 @@ jobs:
                 -d "text=$MESSAGE"
         }
 
-        send_telegram_file() {
+                send_telegram_file() {
             local FILE_PATH="$1"
             local FILE_NAME=$(basename "$FILE_PATH")
             local ESCAPED_NAME=$(escape_markdown_v2 "$FILE_NAME")
             local CAPTION="\`$ESCAPED_NAME\`"
 
-            RESPONSE=$(curl -s -w "%{http_code}" -o response.json -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendDocument" \
-            -F "chat_id=$CHAT_ID" \
-            -F "document=@$FILE_PATH" \
-            -F "caption=$CAPTION" \
-            -F "parse_mode=MarkdownV2")
-            
-            HTTP_CODE=$(echo "$RESPONSE" | tail -n 1)
-            if [ "$HTTP_CODE" -ne 200 ]; then
-               ERROR_MESSAGE="❌ Send file failed! HTTP code: $HTTP_CODE"
-               send_telegram_message "$ERROR_MESSAGE"
-               exit 1
-            fi
+            local MAX_RETRY=5
+            local RETRY_DELAY=10
+            local COUNT=1
+
+            while [ $COUNT -le $MAX_RETRY ]; do
+                RESPONSE=$(curl --connect-timeout 30 --max-time 600 -s -w "%{http_code}" -o response.json -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendDocument" \
+                    -F "chat_id=$CHAT_ID" \
+                    -F "document=@$FILE_PATH" \
+                    -F "caption=$CAPTION" \
+                    -F "parse_mode=MarkdownV2")
+
+                HTTP_CODE=$(echo "$RESPONSE" | tail -n 1)
+
+                if [ "$HTTP_CODE" -eq 200 ]; then
+                    return 0
+                fi
+
+                COUNT=$((COUNT+1))
+                sleep $RETRY_DELAY
+            done
+
+            send_telegram_message "❌ Upload failed after $MAX_RETRY attempts."
+            exit 1
         }
 
         stop_handler() {
