@@ -44,8 +44,8 @@ jobs:
       run: |
         git clone "$KERNEL_URL" -b "$KERNEL_BRANCH" kernel
         cd kernel
-        git reset --hard 53cd6dfbd890a8bca14ab42579a4187ef01ac7fd
-        git cherry-pick 1b41a85dfdb867ffdaf681774f06ffa1a1142bb8..1b114d504aad160e0b3cacb1b2ef2124a75af30c
+        git reset --hard 8b14356ed7d7c16a8f97901de9d391d31ea2ec66
+        git cherry-pick ca969ffcc333ff8fd84c3d3894562c08e4aee3dc..71c5bdfdd2f5aee52ddbd6647abee9d527a25bfd
         echo "KERNEL_DIR=$(pwd)" >> $GITHUB_ENV
 
     - name: Clone AnyKernel3
