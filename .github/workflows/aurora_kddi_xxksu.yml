@@ -44,8 +44,6 @@ jobs:
       run: |
         git clone --depth=1 "$KERNEL_URL" -b "$KERNEL_BRANCH" kernel
         cd kernel
-        wget https://github.com/Sorayukii/stardust_kernel_sony_sdm845/commit/9b14ea2d60cdf7d207684b312d7301ec68abb85c.patch
-        patch -p1 <9b14ea2d60cdf7d207684b312d7301ec68abb85c.patch
         echo "KERNEL_DIR=$(pwd)" >> $GITHUB_ENV
 
     - name: Clone AnyKernel3
