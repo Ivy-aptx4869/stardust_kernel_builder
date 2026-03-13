@@ -15,13 +15,14 @@ jobs:
           - akari_kddi
           - akatsuki_kddi
           - aurora_kddi
+          - apollo_dcm
 
     env:
       BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
       CHAT_ID: ${{ secrets.CHAT_ID }}
-      KERNEL_VER: Alpha5
+      KERNEL_VER: Alpha7
       KERNEL_URL: https://github.com/Sorayukii/stardust_kernel_sony_sdm845
-      KERNEL_BRANCH: next10
+      KERNEL_BRANCH: next11
       CLANG_URL: https://gitlab.com/Sorayukii/aosp-clang.git
       CLANG_BRANCH: 17
       KSU_URL: https://raw.githubusercontent.com/backslashxx/KernelSU/master/kernel/setup.sh
