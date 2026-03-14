@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
@@ -23,7 +23,7 @@ jobs:
     env:
       BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
       CHAT_ID: ${{ secrets.CHAT_ID }}
-      KERNEL_VER: Alpha4
+      KERNEL_VER: Stardust-v2.6
       KERNEL_URL: https://github.com/Sorayukii/stardust_kernel_sony_sdm845
       KERNEL_BRANCH: next8
       CLANG_URL: https://gitlab.com/Sorayukii/aosp-clang.git
